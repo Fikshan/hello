@@ -82,12 +82,10 @@ If there’s a conflict, Git will ask you to resolve it.
 
 15. How do I resolve a merge conflict about a deleted file?
 Q: What to do when Git says deleted by us or can’t commit because of an unmerged file?
-A:
-
-If you want to delete the file:
-git rm <file>
-If you want to keep it:
-git add <file>
+A: If you want to delete the file:
+		git rm <file>
+		If you want to keep it:
+		git add <file>
 
 Then:
 git commit -m "Resolve conflict"
@@ -105,3 +103,129 @@ How to check the status of your repo: git status
 
 How to rename files to remove .txt extensions if needed.
 
+Q: What is a Git branch and why should I use it?
+A: A branch lets you work on new features or fixes without affecting the main project. Each branch is an independent line of development.
+
+Q: How do I create and switch to a new branch?
+A:	git checkout -b feature-1
+	This creates feature-1 and switches you to it.
+
+Q: How can I see all my branches?
+A: git branch
+The branch with * is the one you’re currently on.
+
+Q: How do I merge my changes from a feature branch into main?
+A: 	git checkout main
+	git merge feature-1
+	This brings your feature branch changes into main.
+
+Q: What does “fast-forward” mean in merging?
+A: It means your main branch had no new commits since branching, so Git just moves main’s pointer up—no new merge commit is needed.
+
+Q: Why don’t I see my new branch on GitHub?
+A: You need to push it: git push -u origin feature-1
+
+🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵Part 2: Pulling Updates & Resolving Conflicts — Q&A🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
+
+Q: What is a merge conflict?
+A: It happens when two branches have changed the same part of a file, and Git can’t automatically combine the changes.
+
+Q: How do I simulate a merge conflict?
+A: Make a change to the same file (e.g., hello.txt) in both main and feature-1.
+Commit and push both.
+
+Try to merge:
+git checkout feature-1
+git merge main
+You’ll see a conflict if both changed the same lines.
+
+Q: How do I recognize a conflict in the file?
+A: You’ll see special markers:
+
+markdown
+Copy
+Edit
+<<<<<<< HEAD
+your branch’s version
+=======
+other branch’s version
+>>>>>>> main
+
+Q: How do I resolve a conflict?
+A:Edit the file to keep what you want (can keep both, pick one, or reword).
+Remove the conflict markers (<<<<<<<, =======, >>>>>>>).
+Save the file.
+
+Stage and commit the resolution:
+
+git add <filename>
+git commit -m "Resolved conflict"
+git push
+
+Q: How do I avoid tracking backup files (.bak)?
+A: Add *.bak to your .gitignore.
+
+Q: What if I see “nothing added to commit but untracked files present”?
+A: You likely added the wrong filename (wrong case/spelling) or forgot to stage a file. Double-check file names with ls or git status.
+
+Q2: How do you create a new branch and switch to it in a single command?
+A:git checkout -b <branch-name>
+
+Q3: What is the difference between git merge and git rebase?
+A:git merge combines two branches and preserves their history.
+git rebase moves or “reapplies” commits from one branch on top of another, creating a linear history.
+
+Q4: What is a fast-forward merge?
+A: When the target branch has not diverged from the branch being merged, Git simply moves the branch pointer forward—no merge commit is created.
+
+Q5: How do you delete a branch locally and remotely?
+A:
+
+Locally: git branch -d <branch>
+
+Remotely: git push origin --delete <branch>
+
+Q6: What is the purpose of the -u flag in git push -u origin <branch>?
+A: It sets the upstream branch, so you can use just git push and git pull on that branch going forward.
+
+Q7: How do you list all remote branches?
+A:git branch -r
+
+🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 Pulling Updates & Resolving Conflicts: Interview Questions🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
+Q8: What causes a merge conflict in Git?
+A: Merge conflicts happen when two branches have made changes to the same line(s) of a file or when a file is modified in one branch and deleted in another.
+
+Q9: How do you resolve a merge conflict?
+A: Open the conflicted file, look for conflict markers (<<<<<<<, =======, >>>>>>>), edit to resolve, remove the markers, then stage and commit the file.
+
+Q10: What command do you use to see which files are conflicted?
+A:git status
+
+Q11: What are the steps after you’ve resolved a conflict in a file?
+A:Stage the resolved file: git add <file>
+Complete the merge with a commit: git commit -m "Resolved conflict"
+
+Q12: What does git stash do and when is it useful?
+A: It temporarily shelves local changes not yet committed. Useful when you want to switch branches or pull updates but aren’t ready to commit your work.
+
+Q13: How would you ignore certain files (like logs or backups) from being tracked by Git?
+A: By adding their patterns to a .gitignore file.
+
+Q14: How can you undo a merge if things go wrong?
+A:	If you haven’t committed yet: git merge --abort
+	If committed: git reset --hard <commit-id>
+
+Q15: What does it mean when you see deleted by us or both modified during a merge?
+A: deleted by us: The file was deleted on the current branch but modified on the other.
+both modified: Both branches changed the same file’s lines, causing a conflict.
+
+Q16: How do you view the history of a file, including merges?
+A:git log --oneline --graph --all -- <file>
+
+Q17: How do you resolve a conflict if you want to keep only the incoming changes?
+A: Use:
+		git checkout --theirs <file>
+		git add <file>
+
+Q18: What is a Pull Request (PR) and how is it related to branches?
+A: A Pull Request is a GitHub/GitLab feature for proposing changes. It lets team members review and discuss code before merging one branch into another (commonly used for merging feature branches into main).
