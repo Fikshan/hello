@@ -1,2 +1,4 @@
 This line is from FEATURE-1 branch
+This line is from MAIN branch
+
 Feature 1 changes
