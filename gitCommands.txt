@@ -1,5 +1,6 @@
 Your Git Learning Journey: Q&A Recap
 1. What is Git and why should I use it?
+
 Q: What is Git and why is it important?
 A: Git is a version control system that tracks changes in your files/projects. It helps you collaborate, experiment, and recover old versions easily.
 
@@ -9,42 +10,35 @@ A: You have Git Bash (command line), Git GUI, and GitHub Desktop (visual interfa
 
 3. How do I check and set up my Git identity?
 Q: How do I check my Git username and email?
-A:
-git config --global user.name
-git config --global user.email
-If they’re blank, set them with:
+A: git config --global user.name
+   git config --global user.email
+   If they’re blank, set them with:
 
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
+
 4. How do I create and initialize a project with Git?
 Q: How do I start a Git project?
-A:
-mkdir my-git-practice
-cd my-git-practice
-git init
+A:  mkdir my-git-practice
+    cd my-git-practice
+    git init
 This creates a new project and initializes it as a Git repo.
 
 5. How do I create and add files?
 Q: How do I create and add a file to Git?
-A:
-echo "Hello Git!" > hello.txt
-git add hello.txt
-git commit -m "Initial commit: Add hello.txt"
+A:   echo "Hello Git!" > hello.txt
+     git add hello.txt
+     git commit -m "Initial commit: Add hello.txt"
+
 6. What is the difference between git add hello.txt and git add .?
 Q: What’s the difference?
-A:
-
-git add hello.txt adds only that file to staging.
-
-git add . adds all changes (in current directory & subfolders) to staging.
+A:      git add hello.txt adds only that file to staging.
+        git add . adds all changes (in current directory & subfolders) to staging.
 
 7. What is the difference between main and master?
 Q: What is main vs master branch?
-A:
-
-main is the default branch for new GitHub repos (since 2020).
-
-master was the older default.
+A:      main is the default branch for new GitHub repos (since 2020).
+        master was the older default.
 They work the same; only the name differs.
 
 8. How do I link and push my project to GitHub?
@@ -53,44 +47,36 @@ A:
 git remote add origin https://github.com/<your-username>/<repo>.git
 git branch -M main    # rename branch to 'main' if needed
 git push -u origin main
+
 9. How do I move around drives in Git Bash?
-
 Q: How do I change to the E or G drive in Git Bash?
-A:
-
-cd /e/
-cd /g/
-Unlike Windows CMD, you can’t use e: or g:.
+A:    cd /e/
+      cd /g/
+      Unlike Windows CMD, you can’t use e: or g:.
 
 10. Why do I see .bak files?
 Q: What are .bak files and why are they created?
-A:
-They are backup files made by your text editor, not Git. You can ignore or delete them if not needed.
+A: They are backup files made by your text editor, not Git. You can ignore or delete them if not needed.
 
 11. How can I ignore files (like .bak) in Git?
 Q: How to make Git ignore backup files?
-A:
-Add *.bak to a file called .gitignore in your project, then commit .gitignore to your repo.
+A: Add *.bak to a file called .gitignore in your project, then commit .gitignore to your repo.
 
 12. How do I handle ‘pathspec did not match any files’ error?
 Q: Why did git add .gitignore fail?
-A:
-Your file was named .gitignore.txt (not .gitignore). Remove the .txt extension to fix.
+A: Your file was named .gitignore.txt (not .gitignore). Remove the .txt extension to fix.
 
 13. What is Vim and how do I exit/save in it?
 Q: Why did Git open a black screen when merging?
-A:
-That’s Vim, the default text editor for Git on many systems.
+A: That’s Vim, the default text editor for Git on many systems.
 
 Save and exit with: Esc, then :wq, then Enter.
 
 14. What does git stash, git pull, git stash pop do?
 Q: How does stashing work?
-A:
-
-git stash temporarily saves your uncommitted changes.
-git pull origin main brings down new code from GitHub.
-git stash pop reapplies your changes on top of the new code.
+A:    git *stash* temporarily saves your uncommitted changes.
+      git pull origin main brings down new code from GitHub.
+      git *stash pop* reapplies your changes on top of the new code.
 
 If there’s a conflict, Git will ask you to resolve it.
 
@@ -100,7 +86,6 @@ A:
 
 If you want to delete the file:
 git rm <file>
-
 If you want to keep it:
 git add <file>
 
@@ -109,8 +94,7 @@ git commit -m "Resolve conflict"
 
 16. How do I remove or keep .bak file after a conflict?
 Q: Should I keep or remove the .bak file?
-A:
-Up to you! Generally, delete backup files and add them to .gitignore for cleaner repos.
+A:Up to you! Generally, delete backup files and add them to .gitignore for cleaner repos.
 
 Extra Tips You’ve Learned
 How to open your folder in Explorer from Git Bash: explorer .
